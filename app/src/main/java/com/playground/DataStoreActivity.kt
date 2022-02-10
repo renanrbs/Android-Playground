@@ -2,26 +2,22 @@ package com.playground
 
 import android.content.Context
 import android.os.Bundle
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
-import androidx.datastore.migrations.SharedPreferencesMigration
 import androidx.datastore.preferences.SharedPreferencesMigration
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
-import com.playground.databinding.ActivityMainBinding
+import com.playground.databinding.ActivityDatastoreBinding
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 
-class MainActivity : AppCompatActivity() {
+class DataStoreActivity : AppCompatActivity() {
 
     private val sharedPrefs by lazy {
         getSharedPreferences(SHARED_PREFS_NAME, MODE_PRIVATE)
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityDatastoreBinding.inflate(layoutInflater)
         binding.datastore.setOnClickListener {
             lifecycleScope.launch {
                 saveDataStore()
@@ -53,11 +49,10 @@ class MainActivity : AppCompatActivity() {
 
     fun saveSharedPrefs() {
         sharedPrefs.edit().putString(SHARED_PREFS_KEY, SHARED_PREFS_VALUE + " shared")
-            .putString("biscoito", "bolacha")
             .apply()
     }
 
-    fun readSharedPrefs(binding: ActivityMainBinding) {
+    fun readSharedPrefs(binding: ActivityDatastoreBinding) {
         binding.value.text = sharedPrefs.getString(SHARED_PREFS_KEY, "")
     }
 
@@ -65,24 +60,17 @@ class MainActivity : AppCompatActivity() {
         dataStore.edit { settings ->
             val key = stringPreferencesKey(SHARED_PREFS_KEY)
             settings[key] = "$SHARED_PREFS_VALUE datastore"
-            settings[stringPreferencesKey("asdasd")] = "$SHARED_PREFS_VALUE storeadsda "
         }
     }
 
-    suspend fun readDataStore(binding: ActivityMainBinding) {
+    suspend fun readDataStore(binding: ActivityDatastoreBinding) {
         val key = stringPreferencesKey(SHARED_PREFS_KEY)
         val value: Flow<String> = dataStore.data
             .map { preferences ->
-                // No type safety.
                 preferences[key] ?: ""
             }
-        val value2: Flow<String> = dataStore.data
-            .map { preferences ->
-                // No type safety.
-                preferences[stringPreferencesKey("biscoito")] ?: ""
-            }
 
-        binding.value.text = value.first() + value2.first()
+        binding.value.text = value.first()
     }
 
 
