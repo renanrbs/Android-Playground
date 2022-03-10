@@ -66,13 +66,11 @@ class BiometricActivity : AppCompatActivity() {
                     errString: CharSequence
                 ) {
                     super.onAuthenticationError(errorCode, errString)
-//                    val promptInfo = BiometricPrompt.PromptInfo.Builder()
-//                        .setTitle("PIN login for my app")
-//                        .setSubtitle("Log in using your PIN")
-//                        .setAllowedAuthenticators(DEVICE_CREDENTIAL)
-//                        .build()
-//                    biometricPrompt.authenticate(promptInfo)
-
+                    Toast.makeText(
+                        applicationContext, "Authentication failed",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
                 }
 
                 override fun onAuthenticationSucceeded(
