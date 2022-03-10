@@ -67,6 +67,7 @@ fun ActivitiesList() {
         items(
             items = listOf(
                 ActivityInfo("Data Store", DataStoreActivity::class.java),
+                ActivityInfo("Camera", CameraActivity::class.java),
             ),
             itemContent = {
                 OutlinedButton(
