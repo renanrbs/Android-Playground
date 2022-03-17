@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.playground"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -89,5 +89,6 @@ dependencies {
 
     implementation("androidx.biometric:biometric:1.1.0")
 
-
+    // Jetpack Security
+    implementation 'androidx.security:security-crypto-ktx:1.1.0-alpha03'
 }

@@ -36,7 +36,10 @@
             android:exported="true" />
         <activity
             android:name=".DataStoreActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
+        <activity
+            android:name=".SecurityActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
