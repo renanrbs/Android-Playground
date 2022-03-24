@@ -1,6 +1,7 @@
 package com.playground
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -15,13 +16,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 
 class DataStoreActivity : AppCompatActivity() {
 
-    private val sharedPrefs by lazy {
-        getSharedPreferences(SHARED_PREFS_NAME, MODE_PRIVATE)
-    }
+    private val sharedPrefs: SharedPreferences by inject()
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
         name = SHARED_PREFS_NAME,
@@ -75,7 +75,6 @@ class DataStoreActivity : AppCompatActivity() {
 
 
     companion object {
-        const val SHARED_PREFS_NAME = "shared prefs"
         const val SHARED_PREFS_KEY = "key"
         const val SHARED_PREFS_VALUE = "value"
     }
