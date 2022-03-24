@@ -17,18 +17,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.security.crypto.EncryptedFile
-import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.playground.ui.theme.PlaygroundTheme
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.nio.charset.StandardCharsets
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 
 class SecurityActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent{
-            PlaygroundTheme{
+        setContent {
+            PlaygroundTheme {
                 SecurityActivityContent()
             }
         }
@@ -36,7 +38,9 @@ class SecurityActivity : AppCompatActivity() {
 
     @Composable
     fun SecurityActivityContent() {
-        val state = remember { SecurityActivityState(applicationContext) }
+        val masterKey: MasterKey by inject()
+        val sharedPrefs: SharedPreferences by inject(named("encrypted"))
+        val state = remember { SecurityActivityState(applicationContext, sharedPrefs,masterKey) }
         val sharedPrefKey = "secureTextKey"
         val secureFileName = "secureFile"
 
@@ -82,22 +86,15 @@ class SecurityActivity : AppCompatActivity() {
         }
     }
 
-    private class SecurityActivityState(private val context: Context) {
-        private val mainKey = MasterKey.Builder(context, masterKeyAlias)
-            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-            .build()
-
-        private val secureSharedPreferences: SharedPreferences = EncryptedSharedPreferences.create(
-            context,
-            secureSharedPreferencesName,
-            mainKey,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+    private class SecurityActivityState(
+        private val context: Context,
+        private val secureSharedPreferences: SharedPreferences,
+        private val mainKey: MasterKey
+    ) {
 
         var secureText: String by mutableStateOf("")
 
-        fun writeStringOnSecureSharedPref(key:String, value: String) {
+        fun writeStringOnSecureSharedPref(key: String, value: String) {
             with(secureSharedPreferences.edit()) {
                 putString(key, value)
                 apply()
@@ -113,7 +110,7 @@ class SecurityActivity : AppCompatActivity() {
             val fileToWrite = "$filename.txt"
             val baseFile = File(context.filesDir, fileToWrite)
 
-            if(baseFile.exists()) {
+            if (baseFile.exists()) {
                 baseFile.delete()
             }
 
@@ -157,7 +154,5 @@ class SecurityActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val secureSharedPreferencesName = "secureSharedPrefs"
-        private const val masterKeyAlias = "SecureActivityMasterKeyAlias"
     }
 }
