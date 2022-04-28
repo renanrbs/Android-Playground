@@ -105,4 +105,8 @@ dependencies {
 
     implementation 'io.magicthegathering:kotlinsdk:1.0.4' // API
 
+    // jetpack startup
+    implementation "androidx.startup:startup-runtime:1.1.1"
+
+
 }
