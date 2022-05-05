@@ -3,18 +3,20 @@ package com.playground
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.LoadState
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -25,7 +27,6 @@ import com.playground.paging.MtgCardSource
 import com.playground.ui.theme.PlaygroundTheme
 import io.magicthegathering.kotlinsdk.model.card.MtgCard
 import kotlinx.coroutines.flow.Flow
-import androidx.compose.ui.text.font.FontStyle
 
 class PagingActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,45 @@ class PagingActivity: AppCompatActivity() {
             items(lazyCardList) { card ->
                 MtgCardItem(cardInfo = card!!)
             }
+
+            val refreshState = lazyCardList.loadState.refresh
+            if (refreshState is LoadState.Loading)
+                item {
+                    Column(modifier = Modifier.fillParentMaxSize()) {
+                        Text("Initial data fetch ...")
+                        CircularProgressIndicator()
+                    }
+                }
+            else if (refreshState is LoadState.Error)
+                item {
+                    Column(modifier = Modifier.fillParentMaxSize()) {
+                        val error = refreshState.error
+
+                        Text("Initial Data Error: ${error.localizedMessage}")
+                        Button(onClick = { lazyCardList.retry() }) {
+                            Text("Retry")
+                        }
+                    }
+                }
+
+            val appendState = lazyCardList.loadState.append
+            if (appendState is LoadState.Loading)
+                item {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Subsequent data fetch ...")
+                        CircularProgressIndicator()
+                    }
+                }
+            else if (appendState is LoadState.Error)
+                item {
+                    val error = appendState.error
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Subsequent data Error: ${error.localizedMessage}")
+                        Button(onClick = { lazyCardList.retry() }) {
+                            Text("Retry")
+                        }
+                    }
+                }
         }
     }
 
