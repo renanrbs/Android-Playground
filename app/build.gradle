@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.playground"
-        minSdk 23
+        minSdk 24
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -108,5 +108,6 @@ dependencies {
     // jetpack startup
     implementation "androidx.startup:startup-runtime:1.1.1"
 
-
+    // Jetpack Drag-and-drop
+    implementation "androidx.draganddrop:draganddrop:1.0.0-rc01"
 }

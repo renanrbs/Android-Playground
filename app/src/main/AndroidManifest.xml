@@ -26,7 +26,8 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <meta-data  android:name="com.playground.KoinInitializer"
+            <meta-data
+                android:name="com.playground.KoinInitializer"
                 android:value="androidx.startup" />
         </provider>
 
@@ -55,6 +56,9 @@
             android:exported="true" />
         <activity
             android:name=".PagingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DragAndDropActivity"
             android:exported="true" />
     </application>
 
