@@ -72,6 +72,7 @@ fun ActivitiesList() {
                 ActivityInfo("Security", SecurityActivity::class.java),
                 ActivityInfo("Paging", PagingActivity::class.java),
                 ActivityInfo("Drag and Drop", DragAndDropActivity::class.java),
+                ActivityInfo("Drag and Drop with Compose", DragAndDropComposeActivity::class.java)
             ),
             itemContent = {
                 OutlinedButton(
