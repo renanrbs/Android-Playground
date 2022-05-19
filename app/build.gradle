@@ -110,4 +110,10 @@ dependencies {
 
     // Jetpack Drag-and-drop
     implementation "androidx.draganddrop:draganddrop:1.0.0-rc01"
+
+    // RXJAVA
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+    implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
+
 }

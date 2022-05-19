@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import com.playground.ui.theme.PlaygroundTheme
 
-class RXJavaActivity : AppCompatActivity() {
+class RxJavaActivity : AppCompatActivity() {
     private val viewModel: RxJavaViewModel by viewModels()
     private val data: SnapshotStateList<String> = mutableStateListOf()
 
@@ -43,11 +43,11 @@ class RXJavaActivity : AppCompatActivity() {
                 }
             }
         }
-        viewModel.getData().observe(this, {
+        viewModel.loadUsersConvert().observe(this, {
             data.clear()
             data.addAll(it)
         })
-        viewModel.loadUsers()
+//        viewModel.loadUsers()
     }
 
     @Composable

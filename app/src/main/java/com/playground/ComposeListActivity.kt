@@ -24,7 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.playground.rxjava.RXJavaActivity
+import com.playground.rxjava.RxJavaActivity
 import com.playground.ui.theme.PlaygroundTheme
 
 class ComposeListActivity : ComponentActivity() {
@@ -74,7 +74,7 @@ private fun ActivitiesList() {
                 ActivityInfo("Paging", PagingActivity::class.java),
                 ActivityInfo("Drag and Drop", DragAndDropActivity::class.java),
                 ActivityInfo("Drag and Drop with Compose", DragAndDropComposeActivity::class.java),
-                ActivityInfo("RX Java", RXJavaActivity::class.java)
+                ActivityInfo("RX Java", RxJavaActivity::class.java)
             ),
             itemContent = {
                 OutlinedButton(
