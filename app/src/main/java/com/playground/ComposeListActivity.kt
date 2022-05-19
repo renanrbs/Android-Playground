@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.playground.rxjava.RXJavaActivity
 import com.playground.ui.theme.PlaygroundTheme
 
 class ComposeListActivity : ComponentActivity() {
@@ -44,7 +45,7 @@ class ComposeListActivity : ComponentActivity() {
 }
 
 @Composable
-fun Screen() {
+private fun Screen() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -58,7 +59,7 @@ fun Screen() {
 }
 
 @Composable
-fun ActivitiesList() {
+private fun ActivitiesList() {
     val context = LocalContext.current
 
     LazyColumn(
@@ -72,7 +73,8 @@ fun ActivitiesList() {
                 ActivityInfo("Security", SecurityActivity::class.java),
                 ActivityInfo("Paging", PagingActivity::class.java),
                 ActivityInfo("Drag and Drop", DragAndDropActivity::class.java),
-                ActivityInfo("Drag and Drop with Compose", DragAndDropComposeActivity::class.java)
+                ActivityInfo("Drag and Drop with Compose", DragAndDropComposeActivity::class.java),
+                ActivityInfo("RX Java", RXJavaActivity::class.java)
             ),
             itemContent = {
                 OutlinedButton(
@@ -95,7 +97,7 @@ private fun openActivity(context: Context, targetActivity: Class<*>) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     PlaygroundTheme {
         Screen()
     }
