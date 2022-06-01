@@ -31,6 +31,7 @@ import com.playground.draganddrop.DragAndDropActivity
 import com.playground.draganddrop.DragAndDropComposeActivity
 import com.playground.paging.PagingActivity
 import com.playground.rxjava.RxJavaActivity
+import com.playground.rxjava.withroom.RxWithRoomActivity
 import com.playground.security.SecurityActivity
 import com.playground.ui.theme.PlaygroundTheme
 
@@ -81,7 +82,8 @@ private fun ActivitiesList() {
                 ActivityInfo("Paging", PagingActivity::class.java),
                 ActivityInfo("Drag and Drop", DragAndDropActivity::class.java),
                 ActivityInfo("Drag and Drop with Compose", DragAndDropComposeActivity::class.java),
-                ActivityInfo("RX Java", RxJavaActivity::class.java)
+                ActivityInfo("RX Java", RxJavaActivity::class.java),
+                ActivityInfo("RX Java with Room", RxWithRoomActivity::class.java)
             ),
             itemContent = {
                 OutlinedButton(
