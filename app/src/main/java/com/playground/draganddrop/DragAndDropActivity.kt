@@ -1,4 +1,4 @@
-package com.playground
+package com.playground.draganddrop
 
 import android.content.ClipData
 import android.content.ClipDescription.MIMETYPE_TEXT_PLAIN
@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.draganddrop.DropHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.playground.R
 import com.playground.databinding.ActivityDragAndDropBinding
 
 class DragAndDropActivity : AppCompatActivity() {
@@ -67,7 +68,7 @@ class DragAndDropActivity : AppCompatActivity() {
 
     class CarrouselAdapter(private val items: ArrayList<String>, private val context: Context) : RecyclerView.Adapter<CarrouselAdapter.TextHolder>() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarrouselAdapter.TextHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextHolder {
             val inflatedView = LayoutInflater.from(context).inflate(
                 R.layout.text_card,
                 parent,
@@ -77,7 +78,7 @@ class DragAndDropActivity : AppCompatActivity() {
             return TextHolder(inflatedView)
         }
 
-        override fun onBindViewHolder(holder: CarrouselAdapter.TextHolder, position: Int) {
+        override fun onBindViewHolder(holder: TextHolder, position: Int) {
             val currentText = items[position]
             holder.bindText(currentText)
 

@@ -1,4 +1,4 @@
-package com.playground
+package com.playground.biometric
 
 import android.os.Bundle
 import android.widget.Toast

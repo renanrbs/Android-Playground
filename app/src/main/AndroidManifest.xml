@@ -30,12 +30,12 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.playground.KoinInitializer"
+                android:name="com.playground.dependencyinjection.KoinInitializer"
                 android:value="androidx.startup" />
         </provider>
 
         <activity
-            android:name=".BiometricActivity"
+            android:name=".biometric.BiometricActivity"
             android:exported="true" />
         <activity
             android:name=".ComposeListActivity"
@@ -49,22 +49,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CameraActivity"
+            android:name=".camera.CameraActivity"
             android:exported="true" />
         <activity
-            android:name=".DataStoreActivity"
+            android:name=".datastore.DataStoreActivity"
             android:exported="true" />
         <activity
-            android:name=".SecurityActivity"
+            android:name=".security.SecurityActivity"
             android:exported="true" />
         <activity
-            android:name=".PagingActivity"
+            android:name=".paging.PagingActivity"
             android:exported="true" />
         <activity
-            android:name=".DragAndDropActivity"
+            android:name=".draganddrop.DragAndDropActivity"
             android:exported="true" />
         <activity
-            android:name=".DragAndDropComposeActivity"
+            android:name=".draganddrop.DragAndDropComposeActivity"
             android:exported="true" />
     </application>
 

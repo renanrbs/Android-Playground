@@ -24,7 +24,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.playground.biometric.BiometricActivity
+import com.playground.camera.CameraActivity
+import com.playground.datastore.DataStoreActivity
+import com.playground.draganddrop.DragAndDropActivity
+import com.playground.draganddrop.DragAndDropComposeActivity
+import com.playground.paging.PagingActivity
 import com.playground.rxjava.RxJavaActivity
+import com.playground.security.SecurityActivity
 import com.playground.ui.theme.PlaygroundTheme
 
 class ComposeListActivity : ComponentActivity() {
