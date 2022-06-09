@@ -1,4 +1,4 @@
-package com.playground
+package com.playground.datastore
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -11,6 +11,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
+import com.playground.SHARED_PREFS_NAME
 import com.playground.databinding.ActivityDatastoreBinding
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

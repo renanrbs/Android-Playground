@@ -1,4 +1,4 @@
-package com.playground
+package com.playground.security
 
 import android.content.Context
 import android.content.SharedPreferences
