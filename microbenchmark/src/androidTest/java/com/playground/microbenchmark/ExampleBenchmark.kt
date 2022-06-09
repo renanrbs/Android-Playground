@@ -21,9 +21,22 @@ class ExampleBenchmark {
     val benchmarkRule = BenchmarkRule()
 
     @Test
-    fun log() {
+    fun foreachTest() {
+        val list = (1..10_000_000)
         benchmarkRule.measureRepeated {
-            Log.d("LogBenchmark", "the cost of writing this log method will be measured")
+            list.forEach {
+                it + 1
+            }
+        }
+    }
+
+    @Test
+    fun forTest() {
+        val list = (1..10_000_000)
+        benchmarkRule.measureRepeated {
+            for (i in list) {
+                i + 1
+            }
         }
     }
 }
