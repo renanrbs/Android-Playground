@@ -107,7 +107,7 @@ dependencies {
     def paging_version = "3.1.1"
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    implementation "androidx.paging:paging-compose:1.0.0-alpha14"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha15"
 
     implementation 'io.magicthegathering:kotlinsdk:1.0.4' // API
 
@@ -115,7 +115,7 @@ dependencies {
     implementation "androidx.startup:startup-runtime:1.1.1"
 
     // Jetpack Drag-and-drop
-    implementation "androidx.draganddrop:draganddrop:1.0.0-rc01"
+    implementation "androidx.draganddrop:draganddrop:1.0.0"
 
     // RXJAVA
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
