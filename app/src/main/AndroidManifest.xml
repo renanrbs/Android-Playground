@@ -20,6 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Playground">
+        <activity
+            android:name=".animation.AnimationActivity"
+            android:exported="false" />
+
         <profileable
             android:shell="true"
             tools:targetApi="q" />
@@ -72,7 +76,6 @@
         <activity
             android:name=".rxjava.withroom.RxWithRoomActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>

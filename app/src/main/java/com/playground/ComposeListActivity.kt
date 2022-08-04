@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.playground.animation.AnimationActivity
 import com.playground.biometric.BiometricActivity
 import com.playground.camera.CameraActivity
 import com.playground.datastore.DataStoreActivity
@@ -75,6 +76,7 @@ private fun ActivitiesList() {
     ) {
         items(
             items = listOf(
+                ActivityInfo("Animation", AnimationActivity::class.java),
                 ActivityInfo("Data Store", DataStoreActivity::class.java),
                 ActivityInfo("Camera", CameraActivity::class.java),
                 ActivityInfo("Biometry", BiometricActivity::class.java),
