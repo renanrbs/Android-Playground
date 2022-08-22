@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.playground.animation.AnimationActivity
@@ -30,6 +31,7 @@ import com.playground.camera.CameraActivity
 import com.playground.datastore.DataStoreActivity
 import com.playground.draganddrop.DragAndDropActivity
 import com.playground.draganddrop.DragAndDropComposeActivity
+import com.playground.draganddrop.MicrosoftDragAndDropComposeActivity
 import com.playground.paging.PagingActivity
 import com.playground.rxjava.RxJavaActivity
 import com.playground.rxjava.withroom.RxWithRoomActivity
@@ -84,6 +86,7 @@ private fun ActivitiesList() {
                 ActivityInfo("Paging", PagingActivity::class.java),
                 ActivityInfo("Drag and Drop", DragAndDropActivity::class.java),
                 ActivityInfo("Drag and Drop with Compose", DragAndDropComposeActivity::class.java),
+                ActivityInfo("Microsoft's Drag and Drop with Compose", MicrosoftDragAndDropComposeActivity::class.java),
                 ActivityInfo("RX Java", RxJavaActivity::class.java),
                 ActivityInfo("RX Java with Room", RxWithRoomActivity::class.java)
             ),
@@ -92,7 +95,7 @@ private fun ActivitiesList() {
                     modifier = Modifier.fillMaxWidth(),
                     onClick = { openActivity(context, it.activity) }
                 ) {
-                    Text(text = it.label)
+                    Text(text = it.label, textAlign = TextAlign.Center)
                 }
             }
         )

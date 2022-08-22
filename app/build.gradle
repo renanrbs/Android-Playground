@@ -118,6 +118,9 @@ dependencies {
     // Jetpack Drag-and-drop
     implementation "androidx.draganddrop:draganddrop:1.0.0"
 
+    // Microsoft Drag-and-drop for Compose
+    implementation "com.microsoft.device.dualscreen:draganddrop:1.0.0-alpha02"
+
     // RXJAVA
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'

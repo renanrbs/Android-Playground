@@ -71,6 +71,9 @@
             android:name=".draganddrop.DragAndDropComposeActivity"
             android:exported="true" />
         <activity
+            android:name=".draganddrop.MicrosoftDragAndDropComposeActivity"
+            android:exported="true" />
+        <activity
             android:name=".rxjava.RxJavaActivity"
             android:exported="true" />
         <activity
